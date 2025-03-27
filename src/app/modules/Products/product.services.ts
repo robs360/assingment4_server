@@ -21,7 +21,7 @@ const deleteProductFromDB = async (id: string) => {
 }
 
 const getAllProductForDb = async (query:any) => {
-    console.log(query)
+    
     let search:string="";
     if(query){
        search=query.search

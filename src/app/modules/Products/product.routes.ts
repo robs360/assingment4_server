@@ -4,7 +4,7 @@ import { auth } from "../../middlewares/auth"
 
 const router=express.Router()
 
-router.get('/', auth("admin"), productController.getAllProducts)
+router.get('/', productController.getAllProducts)
 router.post('/create', productController.createProduct)
 router.put('/:id', productController.updateSingleProduct )
 router.delete('/:id', productController.deleteSingleProduct)

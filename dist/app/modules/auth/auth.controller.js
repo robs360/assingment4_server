@@ -25,6 +25,20 @@ const loginController = (req, res, next) => __awaiter(void 0, void 0, void 0, fu
         next(err);
     }
 });
+const changePassController = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const userData = req.body;
+        const result = yield auth_services_1.authServices.changePasswordServices(userData);
+        res.status(200).json({
+            success: true,
+            message: "Password Chnaged Successfully",
+            data: result,
+        });
+    }
+    catch (err) {
+        next(err);
+    }
+});
 exports.authController = {
-    loginController
+    loginController, changePassController
 };

@@ -27,7 +27,6 @@ const deleteProductFromDB = (id) => __awaiter(void 0, void 0, void 0, function* 
     return result;
 });
 const getAllProductForDb = (query) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(query);
     let search = "";
     if (query) {
         search = query.search;

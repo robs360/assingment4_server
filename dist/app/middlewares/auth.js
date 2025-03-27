@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.auth = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const user_model_1 = require("../modules/user/user.model");
-const auth = () => {
+const auth = (...requireRole) => {
     return (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const token = req.headers.authorization;
@@ -29,6 +29,9 @@ const auth = () => {
                 throw new Error("you are unauthorization");
             }
             if (user.isDeleted) {
+                throw new Error("you are unauthorization");
+            }
+            if (requireRole && !requireRole.includes(role)) {
                 throw new Error("you are unauthorization");
             }
             req.user = decoded;

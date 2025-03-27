@@ -33,6 +33,20 @@ const loginServices = (payload) => __awaiter(void 0, void 0, void 0, function* (
     });
     return { accessToken };
 });
+const changePasswordServices = (payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const authentication = yield user_model_1.UserModel.findOne({ email: payload.email });
+    if (!authentication) {
+        throw new Error("Invalid user email and password");
+    }
+    const isPasswordMatch = yield bcrypt_1.default.compare(payload.old_password, authentication.password);
+    if (!isPasswordMatch) {
+        throw new Error("Invalid user email and password");
+    }
+    const hashedNewPassword = yield bcrypt_1.default.hash(payload.new_password, 10);
+    authentication.password = hashedNewPassword;
+    yield authentication.save();
+    return { success: true, message: "Password changed successfully" };
+});
 exports.authServices = {
-    loginServices
+    loginServices, changePasswordServices
 };
