@@ -51,7 +51,7 @@ const deleteSingleProduct:RequestHandler=async (req,res,next)=>{
 const getAllProducts:RequestHandler=async (req:any,res,next)=>{
     try{
         const result = await productServices.getAllProductForDb(req.query)
-        console.log(req.user)
+       
         res.status(200).json({
           success: true,
           message: "Get  all products",

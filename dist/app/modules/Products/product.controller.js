@@ -57,7 +57,6 @@ const deleteSingleProduct = (req, res, next) => __awaiter(void 0, void 0, void 0
 const getAllProducts = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const result = yield product_services_1.productServices.getAllProductForDb(req.query);
-        console.log(req.user);
         res.status(200).json({
             success: true,
             message: "Get  all products",

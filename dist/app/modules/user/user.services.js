@@ -28,6 +28,7 @@ const updateSingleUserIntoDb = (userId, paylood) => __awaiter(void 0, void 0, vo
 });
 const getAllUserFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield user_model_1.UserModel.find({});
+    return result;
 });
 const getSingleUserFormDb = (userId) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield user_model_1.UserModel.findById(userId);

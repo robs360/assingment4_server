@@ -7,7 +7,6 @@ class queryBuilders {
     }
     search(searchableFields) {
         var _a;
-        console.log("Search");
         const searchTerm = (_a = this === null || this === void 0 ? void 0 : this.query) === null || _a === void 0 ? void 0 : _a.searchTerm;
         const orConditions = searchableFields.map((field) => ({
             [field]: { $regex: searchTerm, $options: "i" },
@@ -20,7 +19,6 @@ class queryBuilders {
         return this;
     }
     filter() {
-        console.log("fillter");
         const queryObj = Object.assign({}, this.query);
         const excludeFields = ["searchTerm", "sort", "page", "limit"];
         excludeFields.forEach((el) => delete queryObj[el]);
@@ -29,14 +27,12 @@ class queryBuilders {
     }
     sort() {
         var _a, _b, _c;
-        console.log("Sort");
         const sort = ((_c = (_b = (_a = this === null || this === void 0 ? void 0 : this.query) === null || _a === void 0 ? void 0 : _a.sort) === null || _b === void 0 ? void 0 : _b.split(",")) === null || _c === void 0 ? void 0 : _c.join(" ")) || "-createdAt";
         this.modelQuery = this.modelQuery.sort(sort);
         return this;
     }
     sortOrder() {
         var _a;
-        console.log("Ordersort");
         const sortOrder = ((_a = this === null || this === void 0 ? void 0 : this.query) === null || _a === void 0 ? void 0 : _a.sortBy) || "-createdAt";
         this.modelQuery = this.modelQuery.sort(sortOrder);
         return this;

@@ -24,6 +24,7 @@ const updateSingleUserIntoDb = async (
 
 const getAllUserFromDB = async () => {
     const result = await UserModel.find({})
+    return result
 }
 
 const getSingleUserFormDb = async (userId: string) => {
